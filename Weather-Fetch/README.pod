@@ -5,6 +5,7 @@ Weather::Fetch - a module that fetches the weather
 =head1 DESCRIPTION
 
 This is a module that can be used to make a weather app.
+see EXAMPLE below or F<script/weather.pl> for example
 
 =head1 EXAMPLE
 

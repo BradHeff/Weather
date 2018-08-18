@@ -8,6 +8,7 @@ WriteMakefile(
   AUTHOR           => 'Brad Heffernan',
   LICENSE          => 'freebsd',
   MIN_PERL_VERSION => '5.008004',
+  EXE_FILES        => ['script/weather.pl'],
   PREREQ_PM        => {
     'strict'   => 0,
     'warnings' => 0,

@@ -15,6 +15,7 @@
 #     AUTHOR => [q[Brad Heffernan]]
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
+#     EXE_FILES => [q[script/weather.pl]]
 #     LICENSE => q[freebsd]
 #     META_MERGE => { meta-spec=>{ version=>q[2] }, resources=>{ repository=>{ type=>q[git], url=>q[https://github.com/BradHeff/Weather.git], web=>q[https://github.com/BradHeff/Weather] } } }
 #     MIN_PERL_VERSION => q[5.008004]
@@ -60,11 +61,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Weather::Fetch
 NAME_SYM = Weather_Fetch
-VERSION = 0.01
+VERSION = 0.02
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 0_02
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 0.02
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -165,7 +166,7 @@ XS_FILES =
 C_FILES  = 
 O_FILES  = 
 H_FILES  = 
-MAN1PODS = 
+MAN1PODS = script/weather.pl
 MAN3PODS = lib/Weather/Fetch.pm
 
 # Where is the Config information that we are using/depend on
@@ -260,7 +261,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Weather-Fetch
-DISTVNAME = Weather-Fetch-0.01
+DISTVNAME = Weather-Fetch-0.02
 
 
 # --- MakeMaker macro section:
@@ -416,7 +417,10 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all config  \
-	lib/Weather/Fetch.pm
+	lib/Weather/Fetch.pm \
+	script/weather.pl
+	$(NOECHO) $(POD2MAN) --section=1 --perm_rw=$(PERM_RW) -u \
+	  script/weather.pl $(INST_MAN1DIR)/weather.pl.$(MAN1EXT) 
 	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) -u \
 	  lib/Weather/Fetch.pm $(INST_MAN3DIR)/Weather::Fetch.$(MAN3EXT) 
 
@@ -427,6 +431,22 @@ manifypods : pure_all config  \
 
 
 # --- MakeMaker installbin section:
+
+EXE_FILES = script/weather.pl
+
+pure_all :: $(INST_SCRIPT)/weather.pl
+	$(NOECHO) $(NOOP)
+
+realclean ::
+	$(RM_F) \
+	  $(INST_SCRIPT)/weather.pl 
+
+$(INST_SCRIPT)/weather.pl : script/weather.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/weather.pl
+	$(CP) script/weather.pl $(INST_SCRIPT)/weather.pl
+	$(FIXIN) $(INST_SCRIPT)/weather.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/weather.pl
+
 
 
 # --- MakeMaker subdirs section:
@@ -511,7 +531,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  warnings: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  repository: https://github.com/BradHeff/Weather.git' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: 0.01' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: 0.02' >> META_new.yml
 	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
@@ -564,7 +584,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '         "web" : "https://github.com/BradHeff/Weather"' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : 0.01,' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : 0.02,' >> META_new.json
 	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 2.27400_02"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
@@ -868,7 +888,7 @@ testdb_static test_static :: subdirs-test_static
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="Weather-Fetch" VERSION="0.01">' > Weather-Fetch.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="Weather-Fetch" VERSION="0.02">' > Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>a module that fetches the weather</ABSTRACT>' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Brad Heffernan</AUTHOR>' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> Weather-Fetch.ppd

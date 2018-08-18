@@ -4,7 +4,7 @@ package Weather::Fetch;
 
 use XML::LibXML;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub new {
 	my $class = shift;
@@ -95,6 +95,7 @@ Weather::Fetch - a module that fetches the weather
 =head1 DESCRIPTION
 
 This is a module that can be used to make a weather app.
+see F<script/weather.pl> for example
 
 =head1 AUTHOR
 
