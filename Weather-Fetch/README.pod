@@ -15,7 +15,7 @@ Get the information you need from https://www.accuweather.com
 
 For example we will use Chicago
 
-#https://www.accuweather.com/en/us/chicago-il/60608/weather-forecast/348308
+https://www.accuweather.com/en/us/chicago-il/60608/weather-forecast/348308
 
 This is the URL after we find our City/Town, so lets take the info we need
 
@@ -24,7 +24,7 @@ This is the URL after we find our City/Town, so lets take the info we need
 	country = us
 	city = chicago
 
-# Source
+## Source
 
 	use Weather::Fetch;
 
