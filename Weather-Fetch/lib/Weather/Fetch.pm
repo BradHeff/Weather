@@ -90,7 +90,7 @@ sub getForecast {
 
 =head1 NAME
 
-App::Weather - a module that fetches the weather
+Weather::Fetch - a module that fetches the weather
 
 =head1 DESCRIPTION
 
