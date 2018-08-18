@@ -1,6 +1,6 @@
 #!perl
 
-package Weather;
+package Weather::Fetch;
 
 use XML::LibXML;
 

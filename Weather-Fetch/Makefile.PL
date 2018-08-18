@@ -2,9 +2,9 @@ use 5.008004;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-  NAME             => 'App::Weather',
-  VERSION_FROM     => 'lib/App/Weather.pm',
-  ABSTRACT_FROM    => 'lib/App/Weather.pm',
+  NAME             => 'Weather::Fetch',
+  VERSION_FROM     => 'lib/Weather/Fetch.pm',
+  ABSTRACT_FROM    => 'lib/Weather/Fetch.pm',
   AUTHOR           => 'Brad Heffernan',
   LICENSE          => 'freebsd',
   MIN_PERL_VERSION => '5.008004',
