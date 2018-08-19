@@ -20,7 +20,7 @@
 #     META_MERGE => { meta-spec=>{ version=>q[2] }, resources=>{ repository=>{ type=>q[git], url=>q[https://github.com/BradHeff/Weather.git], web=>q[https://github.com/BradHeff/Weather] } } }
 #     MIN_PERL_VERSION => q[5.008004]
 #     NAME => q[Weather::Fetch]
-#     PREREQ_PM => { XML::LibXML=>q[1.0], strict=>q[0], warnings=>q[0] }
+#     PREREQ_PM => { XML::LibXML=>q[0], strict=>q[0], warnings=>q[0] }
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[lib/Weather/Fetch.pm]
 
@@ -525,7 +525,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '  XML::LibXML: '\''1.0'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  XML::LibXML: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  perl: '\''5.008004'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  strict: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  warnings: '\''0'\''' >> META_new.yml
@@ -569,7 +569,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      },' >> META_new.json
 	$(NOECHO) $(ECHO) '      "runtime" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
-	$(NOECHO) $(ECHO) '            "XML::LibXML" : "1.0",' >> META_new.json
+	$(NOECHO) $(ECHO) '            "XML::LibXML" : "0",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "perl" : "5.008004",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "strict" : "0",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "warnings" : "0"' >> META_new.json
@@ -893,7 +893,7 @@ ppd :
 	$(NOECHO) $(ECHO) '    <AUTHOR>Brad Heffernan</AUTHOR>' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,008004,0,0" />' >> Weather-Fetch.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="XML::LibXML" VERSION="1.0" />' >> Weather-Fetch.ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="XML::LibXML" />' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="strict::" />' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="warnings::" />' >> Weather-Fetch.ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-thread-multi-5.26" />' >> Weather-Fetch.ppd

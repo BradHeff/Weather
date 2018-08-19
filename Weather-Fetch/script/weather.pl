@@ -1,7 +1,5 @@
 #!perl
 
-use strict;
-use warnings;
 use Weather::Fetch;
 
 my $w = new Weather::Fetch("F", "60608", "EN", "US", "chicago");

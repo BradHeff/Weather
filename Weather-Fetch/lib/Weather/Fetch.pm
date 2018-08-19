@@ -2,6 +2,8 @@
 
 package Weather::Fetch;
 
+use strict;
+use warnings;
 use XML::LibXML;
 
 our $VERSION = 0.02;
