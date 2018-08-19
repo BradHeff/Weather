@@ -47,6 +47,18 @@ This is the URL after we find our City/Town, so lets take the info we need
 
 Brad Heffernan
 
+=head1 INSTALLATION
+
+Using C<cpan>:
+
+    $ cpan Weather::Fetch
+
+Manual install:
+
+    $ perl Makefile.PL
+    $ make
+    $ sudo make install
+
 =head1 LICENSE
 
 FreeBSD

@@ -91,6 +91,6 @@ Manual install:
 
     $ perl Makefile.PL
     $ make
-    $ make install
+    $ sudo make install
 
 =cut
